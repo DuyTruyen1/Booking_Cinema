@@ -1,11 +1,11 @@
 <div class="topbar d-flex align-items-center">
     <nav class="navbar navbar-expand">
         <div class="topbar-logo-header">
-            <div class="">
-                <img src="/assets_admin_rocker/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <div class=""  width="100">
+                <img src="/assets_admin_rocker/images/admin.png" class="logo-icon" alt="logo icon">
             </div>
             <div class="">
-                <h4 class="logo-text">Rocker</h4>
+                <h4 class="logo-text"></h4>
             </div>
         </div>
         <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>

@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('ten_ghe');
             $table->integer('tinh_trang');
-            $table->integer('id_phong');
+            $table->unsignedBigInteger('id_phong'); // Khóa ngoại
             $table->timestamps();
+
+            $table->foreign('id_phong')->references('id')->on('phongs')->onDelete('cascade');
         });
     }
 

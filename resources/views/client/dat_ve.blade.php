@@ -64,7 +64,7 @@
         methods: {
             giuCho(value) {
                 axios
-                    .get('/client/dat-ve/giu-cho/' + value.id)
+                    .post('/client/dat-ve/giu-cho/' + value.id)
                     .then((res) => {
                         if(res.data.status) {
                             toastr.success(res.data.messages);

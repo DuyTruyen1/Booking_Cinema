@@ -1,10 +1,10 @@
-<header class="header-style-two">
+<header class="header-style-two bg-primary">
     <div class="header-top-wrap">
         <div class="container custom-container">
             <div class="row align-items-center">
                 <div class="col-md-6 d-none d-md-block">
                     <div class="header-top-subs">
-                        <p><span>Address:</span> 559 Điện Biên Phủ, Hải Châu, Đà Nẵng &nbsp;&nbsp; <span>Hotline:</span> 0905081339</p>
+                        <p><span>Address:</span> Hải Châu, Đà Nẵng &nbsp;&nbsp; <span>Hotline:</span> 0794694769</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div id="sticky-header" class="menu-area">
+    <div id="sticky-header" class="menu-area" style="background-color: #f8e61c97;">
         <div class="container custom-container">
             <div class="row">
                 <div class="col-12">
@@ -33,7 +33,7 @@
                         <nav class="menu-nav show">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="/assets_client/img/logo/logo.png" alt="Logo">
+                                    <img src="/assets_client/img/logo/cgvlogo.png" alt="Logo">
                                 </a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
@@ -42,13 +42,18 @@
                                     </li> --}}
                                     <li><a href="/">Trang Chủ</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Phim</a>
+                                    <li><a href="/">Thành Viên</a>
+                                        <ul class="submenu">
+                                            <li><a href="/">Tài Khoản</a></li>
+                                            <li><a href="/">Quyền Lợi</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children "><a href="#">Phim</a>
                                         <ul class="submenu">
                                             <li><a href="/phim-dang-chieu">Phim Đang Khởi Chiếu</a></li>
                                             <li><a href="/phim-sap-chieu">Phim Sắp Khởi Chiếu</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="tv-show.html">tv show</a></li>
                                     <li><a href="/pricing">Giá Vé</a></li>
                                     <li><a href="/blog">Bài Viết</a>
                                     </li>
@@ -67,16 +72,10 @@
                                         </div>
                                     </li>
                                     <li class="header-lang">
-                                        <form action="#">
-                                            <div class="icon"><i class="flaticon-globe"></i></div>
-                                            <select id="lang-dropdown">
-                                                <option value="">En</option>
-                                                <option value="">Au</option>
-                                                <option value="">AR</option>
-                                                <option value="">TU</option>
-                                            </select>
-                                        </form>
-                                    </li>
+                                        <a href="/phim-dang-chieu">
+                                            <img alt="Mua vé ngay" src="https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/news-offers/mua-ve_ngay.png">
+                                        </a>
+                                                                            </li>
                                     @if (Auth::guard('customer')->check())
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">

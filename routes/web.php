@@ -57,7 +57,7 @@ Route::get('/login', [CustomerController::class, 'viewLogin']);
 Route::post('/login', [CustomerController::class, 'actionLogin']);
 Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::post('/register', [CustomerController::class, 'actionRegister']);
-Route::get('/active/{hash}',[CustomerController::class, 'actionActive']);
+Route::get('/active/{hash}', [CustomerController::class, 'actionActive']);
 
 
 // của admin
@@ -67,10 +67,10 @@ Route::post('/admin/login', [AdminController::class, 'actionLogin']);
 Route::get('/alo', [BaiVietController::class, 'alo']);
 
 
-Route::group(['prefix' => '/admin'], function() {
+Route::group(['prefix' => '/admin'], function () {
     Route::get('/logout', [AdminController::class, 'logout']);
 
-    Route::group(['prefix' => '/phong'], function() {
+    Route::group(['prefix' => '/phong'], function () {
         Route::get('/index', [PhongController::class, 'index']);
         Route::post('/index', [PhongController::class, 'store']);
         Route::get('/data', [PhongController::class, 'getData']);
@@ -81,7 +81,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/change-status-ghe', [PhongController::class, 'changeStatusGhe']);
     });
 
-    Route::group(['prefix' => '/phim'], function() {
+    Route::group(['prefix' => '/phim'], function () {
         Route::get('/index', [PhimController::class, 'index']);
         Route::post('/index', [PhimController::class, 'store']);
         Route::get('/data', [PhimController::class, 'getData']);
@@ -90,7 +90,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/change-status/{id}', [PhimController::class, 'changeStatus']);
     });
 
-    Route::group(['prefix' => '/lich-chieu'], function() {
+    Route::group(['prefix' => '/lich-chieu'], function () {
         Route::get('/index', [LichChieuController::class, 'index']);
         Route::post('/index', [LichChieuController::class, 'store']);
         Route::get('/data', [LichChieuController::class, 'getData']);
@@ -100,12 +100,12 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/change-status-ghe-ban/{id}', [LichChieuController::class, 'changeStatusGheBan']);
     });
 
-    Route::group(['prefix' => '/cau-hinh'], function() {
+    Route::group(['prefix' => '/cau-hinh'], function () {
         Route::get('/index', [ConfigController::class, 'index']);
         Route::post('/index', [ConfigController::class, 'store']);
     });
 
-    Route::group(['prefix' => '/khach-hang'], function() {
+    Route::group(['prefix' => '/khach-hang'], function () {
         Route::get('/index', [CustomerController::class, 'index']);
         Route::post('/index', [CustomerController::class, 'store']);
         Route::get('/data', [CustomerController::class, 'getData']);
@@ -115,7 +115,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/doi-mat-khau', [CustomerController::class, 'doiMatKhau']);
     });
 
-    Route::group(['prefix' => '/bai-viet'], function() {
+    Route::group(['prefix' => '/bai-viet'], function () {
         Route::get('/index', [BaiVietController::class, 'index']);
         Route::post('/index', [BaiVietController::class, 'store']);
         Route::get('/data', [BaiVietController::class, 'getData']);
@@ -124,7 +124,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/change-status/{id}', [BaiVietController::class, 'changeStatus']);
     });
 
-    Route::group(['prefix' => '/admin'], function() {
+    Route::group(['prefix' => '/admin'], function () {
         Route::get('/index', [AdminController::class, 'index']);
         Route::post('/index', [AdminController::class, 'store']);
         Route::get('/data', [AdminController::class, 'getData']);
@@ -136,13 +136,13 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/update-profile', [AdminController::class, 'updateProfile']);
     });
 
-    Route::group(['prefix' => '/lien-he'], function() {
+    Route::group(['prefix' => '/lien-he'], function () {
         Route::get('/index', [LienHeController::class, 'index']);
         Route::get('/data', [LienHeController::class, 'getData']);
         Route::get('/change-status/{id}', [LienHeController::class, 'changeStatus']);
         Route::post('/delete', [LienHeController::class, 'drop']);
     });
-    Route::group(['prefix' => '/binh-luan'], function() {
+    Route::group(['prefix' => '/binh-luan'], function () {
         Route::get('/index', [CommentController::class, 'index']);
         Route::get('/data', [CommentController::class, 'getData']);
         Route::post('/delete', [CommentController::class, 'drop']);
@@ -154,10 +154,11 @@ Route::group(['prefix' => '/admin'], function() {
 
 Route::get('/824b175f-be67-4bb9-a210-9e27129dac76', [GheBanController::class, 'huyVeAuto']);
 
-Route::group(['prefix' => '/client', 'middleware' => 'loginCustomer'], function() {
+Route::group(['prefix' => '/client', 'middleware' => 'loginCustomer'], function () {
+
     Route::get('/dat-ve/{id_lich}', [LichChieuController::class, 'viewDatVePhim']);
     Route::get('/ghe-phong-hien-thi/{id_lich}', [LichChieuController::class, 'getGhePhong']);
-    Route::get('/dat-ve/giu-cho/{id_ghe}', [GheBanController::class, 'actionGiuCho']);
+    Route::post('/dat-ve/giu-cho/{id_ghe}', [GheBanController::class, 'actionGiuCho']);
     Route::get('/dat-ve/huy-ghe/{id_ghe}', [GheBanController::class, 'actionHuyGhe']);
     Route::get('/logout', [CustomerController::class, 'logout']);
     Route::get('/thanh-toan', [GheBanController::class, 'thanhToan']);

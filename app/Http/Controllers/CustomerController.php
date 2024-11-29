@@ -48,10 +48,10 @@ class CustomerController extends Controller
         $value = $request->email;
 
         $user = Customer::where('email', $value)
-                        ->orWhere('so_dien_thoai', $value)
-                        ->first();
+            ->orWhere('so_dien_thoai', $value)
+            ->first();
         // dd($user->id);
-        if($user) {
+        if ($user) {
             $hash = Str::uuid();
             $user->hash_reset = $hash;
             $user->save();
@@ -172,7 +172,7 @@ class CustomerController extends Controller
     public function changeStatus($id)
     {
         $account = Customer::where('id', $id)->first();
-        if($account->loai_tai_khoan == -1) {
+        if ($account->loai_tai_khoan == -1) {
             $account->loai_tai_khoan = 1;
         } else {
             $account->loai_tai_khoan = -1;
@@ -196,9 +196,9 @@ class CustomerController extends Controller
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $check = Auth::guard('customer')->attempt($data);
-        if($check) {
+        if ($check) {
             $user = Auth::guard('customer')->user();
-            if($user->loai_tai_khoan == 0) {
+            if ($user->loai_tai_khoan == 0) {
                 Toastr::warning('Tài khoản chưa kích hoạt');
 
                 $dataMail['ho_va_ten'] = $user->ho_va_ten;
@@ -207,7 +207,7 @@ class CustomerController extends Controller
                 sendMailKichHoat::dispatch($dataMail);
 
                 Auth::guard('customer')->logout();
-            } else if($user->loai_tai_khoan == -1) {
+            } else if ($user->loai_tai_khoan == -1) {
                 Toastr::error('Tài khoản của bạn đã bị khoá!');
                 Auth::guard('customer')->logout();
             } else {
@@ -247,7 +247,7 @@ class CustomerController extends Controller
     {
         $check = Customer::where('hash_mail', $hash)->first();
 
-        if($check) {
+        if ($check) {
             $check->hash_mail = null;
             $check->loai_tai_khoan = 1;
             $check->save();

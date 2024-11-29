@@ -11,9 +11,12 @@ return new class extends Migration
         Schema::create('ghe_bans', function (Blueprint $table) {
             $table->id();
             $table->string('ten_ghe');
-            $table->integer('id_lich');
+            $table->unsignedBigInteger('id_lich'); // Khóa ngoại đến bảng 'lich_chieus'
             $table->integer('co_the_ban');
             $table->timestamps();
+
+            // Định nghĩa khóa ngoại
+            $table->foreign('id_lich')->references('id')->on('lich_chieus')->onDelete('cascade');
         });
     }
 

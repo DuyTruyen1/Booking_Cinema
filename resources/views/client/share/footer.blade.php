@@ -5,7 +5,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="/assets_client/img/logo/logo.png" alt=""></a>
+                            <img src="/assets_client/img/logo/cgvlogo.png" alt="Logo">
                         </div>
                     </div>
                     <div class="col-lg-9">

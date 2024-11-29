@@ -16,20 +16,20 @@ class AdminSeeder extends Seeder
 
         DB::table('admins')->insert([
             [
-                'ho_va_ten'     => "Trần Nguyễn Duy Khánh",
-                'email'         => "duykhanhtran17062003@gmail.com",
+                'ho_va_ten'     => "Phạm Duy Truyền",
+                'email'         => "truyenmap420@gmail.com@gmail.com",
                 'password'      => bcrypt("123123"),
                 'trang_thai'    => 1,
-                'avatar'        => "/image/z3976458057712_c3684ddaf878e95cfa850558ebe85804.jpg",
-                'so_dien_thoai' => "0905081330"
+                'avatar'        => "/image/truyen.jpg",
+                'so_dien_thoai' => "0794694769"
             ],
             [
-                'ho_va_ten'     => "Hồ Thị Thanh Thanh",
-                'email'         => "thanhchuot1806@gmail.com",
+                'ho_va_ten'     => "Phạm Duy Truyền 1",
+                'email'         => "truyenmap420@gmail.com",
                 'password'      => bcrypt("123123"),
                 'trang_thai'    => 1,
-                'avatar'        => "/image/324747105_476302261365063_5226754233536039042_n.jpg",
-                'so_dien_thoai' => "0905081331"
+                'avatar'        => "/image/truyen.jpg",
+                'so_dien_thoai' => "0913797810"
             ],
         ]);
     }

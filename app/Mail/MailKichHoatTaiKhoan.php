@@ -23,6 +23,6 @@ class MailKichHoatTaiKhoan extends Mailable
     public function build()
     {
         return $this->subject('Kích hoạt tài khoản tại website...')
-                    ->view('client.kich_hoat_tai_khoan', ['data' => $this->data]);
+            ->view('client.kich_hoat_tai_khoan', ['data' => $this->data]);
     }
 }

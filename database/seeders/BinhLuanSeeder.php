@@ -16,8 +16,8 @@ class BinhLuanSeeder extends Seeder
 
         DB::table('comments')->insert([
             [
-                'ho_va_ten' => 'Trần Nguyễn Duy Khánh',
-                'email'     => 'duykhanhtran17062003@gmail.com',
+                'ho_va_ten' => 'Phạm Duy Truyền',
+                'email'     => 'truyenmap420@gmail.com',
                 'avatar'    => '/assets_client/img/blog/comment_avatar01.jpg',
                 'noi_dung'  => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil minus nobis quidem dignissimos aut. Dolorum est illo iusto alias at!',
                 'id_nguoi_binh_luan' => 1,

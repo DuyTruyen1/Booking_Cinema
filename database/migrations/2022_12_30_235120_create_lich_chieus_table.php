@@ -15,13 +15,17 @@ return new class extends Migration
     {
         Schema::create('lich_chieus', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_phim');
-            $table->integer('id_phong');
+            $table->unsignedBigInteger('id_phim'); // Khóa ngoại đến bảng 'phims'
+            $table->unsignedBigInteger('id_phong'); // Khóa ngoại đến bảng 'phongs'
             $table->integer('thoi_gian_chieu_chinh');
             $table->integer('thoi_gian_quang_cao');
             $table->dateTime('thoi_gian_bat_dau');
             $table->dateTime('thoi_gian_ket_thuc');
             $table->timestamps();
+
+            // Định nghĩa các khóa ngoại
+            $table->foreign('id_phim')->references('id')->on('phims')->onDelete('cascade');
+            $table->foreign('id_phong')->references('id')->on('phongs')->onDelete('cascade');
         });
     }
 

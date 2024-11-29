@@ -16,8 +16,8 @@ class LienHeSeeder extends Seeder
 
         DB::table('lien_hes')->insert([
             [
-                'ho_va_ten' => 'Trần Nguyễn Duy Khánh',
-                'email'     => 'duykhanhtran17062003@gmail.com',
+                'ho_va_ten' => 'Phạm Duy Truyền',
+                'email'     => 'truyenmap420@gmail.com',
                 'tieu_de'   => 'Góp ý dịch vụ',
                 'noi_dung'  => 'Nội dung là ...............................................',
             ]

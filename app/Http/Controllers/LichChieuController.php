@@ -21,11 +21,11 @@ class LichChieuController extends Controller
     {
         $now = Carbon::now()->toDateTimeString();
         $lich_chieu = LichChieu::where('id', $id_lich)
-                               ->where('thoi_gian_ket_thuc', '>', $now)
-                               ->first();
+            ->where('thoi_gian_ket_thuc', '>', $now)
+            ->first();
         $user_login = Auth::guard('customer')->user()->id;
         // dd($user_login->toArray());
-        if($lich_chieu) {
+        if ($lich_chieu) {
             return view('client.dat_ve', compact('id_lich', 'user_login'));
         } else {
             Toastr::error('Lịch chiếu không tồn tại!');
@@ -37,8 +37,8 @@ class LichChieuController extends Controller
     {
         $ghe = GheBan::where('id_lich', $id_lich)->get();
         $phong = LichChieu::join('phongs', 'lich_chieus.id_phong', 'phongs.id')
-                          ->where('lich_chieus.id', $id_lich)
-                          ->first();
+            ->where('lich_chieus.id', $id_lich)
+            ->first();
         return response()->json([
             'hang_doc'      => $phong->hang_doc,
             'hang_ngang'    => $phong->hang_ngang,
@@ -86,21 +86,21 @@ class LichChieuController extends Controller
         $bat_dau = $thoi_gian_bd->toDateString();
         $ket_thuc = $thoi_gian_kt->toDateString();
 
-        if($ngay_chieu < $now) {
+        if ($ngay_chieu < $now) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Ngày Chiếu phải là hôm nay trở đi'
             ]);
         }
 
-        if($bat_dau < $time) {
+        if ($bat_dau < $time) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Giờ bắt đầu phải lớn hơn hoặc bằng giờ hiện tại'
             ]);
         }
 
-        if($gio_kt <= $gio_bd) {
+        if ($gio_kt <= $gio_bd) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Giờ kết thúc phải lớn hơn bằng giờ bắt đầu'
@@ -110,20 +110,20 @@ class LichChieuController extends Controller
 
         // giờ bắt đầu hoặc giờ kết thúc nằm giữa (thoi_gian_bat_dau & thoi_gian_ket_thuc) của lịch chiếu khác
         $check1 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '<=', $bat_dau)
-                            ->where('thoi_gian_ket_thuc', '>=', $bat_dau)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '<=', $bat_dau)
+            ->where('thoi_gian_ket_thuc', '>=', $bat_dau)
+            ->first();
         $check2 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '<=', $ket_thuc)
-                            ->where('thoi_gian_ket_thuc', '>=', $ket_thuc)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '<=', $ket_thuc)
+            ->where('thoi_gian_ket_thuc', '>=', $ket_thuc)
+            ->first();
         // giờ bắt đầu và giờ kết thúc nằm lồng (thoi_gian_bat_dau & thoi_gian_ket_thuc) của lịch chiếu khác
         $check3 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '>=', $bat_dau)
-                            ->where('thoi_gian_ket_thuc', '<=', $ket_thuc)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '>=', $bat_dau)
+            ->where('thoi_gian_ket_thuc', '<=', $ket_thuc)
+            ->first();
 
-        if($check1 || $check2 || $check3) {
+        if ($check1 || $check2 || $check3) {
             return response()->json([
                 'status'    => false,
                 'messages'  => 'Lịch chiếu đã bị trùng'
@@ -146,7 +146,7 @@ class LichChieuController extends Controller
         //                    ->get();
 
         // tạo ghế bán
-        foreach($list_ghe as $key => $value) {
+        foreach ($list_ghe as $key => $value) {
             GheBan::create([
                 'id_lich'       => $lich->id,
                 'ten_ghe'       => $value->ten_ghe,
@@ -178,7 +178,7 @@ class LichChieuController extends Controller
 
         $now = Carbon::today();
 
-        if($ngay_chieu < $now) {
+        if ($ngay_chieu < $now) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Ngày Chiếu phải là hôm nay trở đi'
@@ -193,14 +193,14 @@ class LichChieuController extends Controller
         $bat_dau = $thoi_gian_bd->toDateString();
         $ket_thuc = $thoi_gian_kt->toDateString();
 
-        if($bat_dau < $time) {
+        if ($bat_dau < $time) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Giờ bắt đầu phải lớn hơn hoặc bằng giờ hiện tại'
             ]);
         }
 
-        if($gio_kt <= $gio_bd) {
+        if ($gio_kt <= $gio_bd) {
             return response()->json([
                 'status'    =>  false,
                 'messages'  =>  'Giờ kết thúc phải lớn hơn bằng giờ bắt đầu'
@@ -209,20 +209,20 @@ class LichChieuController extends Controller
 
         // giờ bắt đầu hoặc giờ kết thúc nằm giữa (thoi_gian_bat_dau & thoi_gian_ket_thuc) của lịch chiếu khác
         $check1 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '<=', $bat_dau)
-                            ->where('thoi_gian_ket_thuc', '>=', $bat_dau)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '<=', $bat_dau)
+            ->where('thoi_gian_ket_thuc', '>=', $bat_dau)
+            ->first();
         $check2 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '<=', $ket_thuc)
-                            ->where('thoi_gian_ket_thuc', '>=', $ket_thuc)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '<=', $ket_thuc)
+            ->where('thoi_gian_ket_thuc', '>=', $ket_thuc)
+            ->first();
         // giờ bắt đầu và giờ kết thúc nằm lồng (thoi_gian_bat_dau & thoi_gian_ket_thuc) của lịch chiếu khác
         $check3 = LichChieu::where('id_phong', $request->id_phong)
-                            ->where('thoi_gian_bat_dau', '>=', $bat_dau)
-                            ->where('thoi_gian_ket_thuc', '<=', $ket_thuc)
-                            ->first();
+            ->where('thoi_gian_bat_dau', '>=', $bat_dau)
+            ->where('thoi_gian_ket_thuc', '<=', $ket_thuc)
+            ->first();
 
-        if($check1 || $check2 || $check3) {
+        if ($check1 || $check2 || $check3) {
             return response()->json([
                 'status'    => false,
                 'messages'  => 'Lịch chiếu đã bị trùng'
@@ -246,20 +246,20 @@ class LichChieuController extends Controller
         //                    ->join('ghes', 'ghes.id_phong', 'phongs.id')
         //                    ->get();
         // tạo ghế bán
-        foreach($list_ghe as $key => $value) {
-            if($value->is_ghe_doi == 1) {
+        foreach ($list_ghe as $key => $value) {
+            if ($value->is_ghe_doi == 1) {
                 GheBan::create([
                     'id_lich'   => $value->id,
                     'ten_ghe'   => $value->ten_ghe,
-                    'co_the_ban'=> 1,
-                    'is_ghe_doi'=> 1,
+                    'co_the_ban' => 1,
+                    'is_ghe_doi' => 1,
                 ]);
             } else {
                 GheBan::create([
                     'id_lich'   => $value->id,
                     'ten_ghe'   => $value->ten_ghe,
-                    'co_the_ban'=> 1,
-                    'is_ghe_doi'=> 0,
+                    'co_the_ban' => 1,
+                    'is_ghe_doi' => 0,
                 ]);
             }
         }
@@ -273,9 +273,9 @@ class LichChieuController extends Controller
     public function getData()
     {
         $data = LichChieu::join('phims', 'lich_chieus.id_phim', 'phims.id')
-                           ->join('phongs', 'lich_chieus.id_phong', 'phongs.id')
-                           ->select('phims.ten_phim', 'phongs.ten_phong', 'lich_chieus.*')
-                           ->get();
+            ->join('phongs', 'lich_chieus.id_phong', 'phongs.id')
+            ->select('phims.ten_phim', 'phongs.ten_phong', 'lich_chieus.*')
+            ->get();
 
         return response()->json([
             'data' => $data
@@ -293,6 +293,4 @@ class LichChieuController extends Controller
             'messages'  => 'Đã thay đổi trạng thái ghế bán thành công!'
         ]);
     }
-
-
 }

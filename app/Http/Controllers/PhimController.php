@@ -61,9 +61,9 @@ class PhimController extends Controller
     public function changeStatus($id)
     {
         $data = Phim::where('id', $id)->first();
-        if($data->tinh_trang == 1){
+        if ($data->tinh_trang == 1) {
             $data->tinh_trang = 0;
-        } else{
+        } else {
             $data->tinh_trang = 1;
         }
         $data->save();

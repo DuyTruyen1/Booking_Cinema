@@ -12,9 +12,9 @@ class CustomerLogin
     public function handle(Request $request, Closure $next)
     {
         $check = Auth::guard('customer')->check();
-        if($check) {
+        if ($check) {
             $user_login = Auth::guard('customer')->user();
-            if($user_login->loai_tai_khoan <= 0) {
+            if ($user_login->loai_tai_khoan <= 0) {
                 Toastr::error('Tài khoản của bạn đã bị khoá!');
                 return redirect('/login');
             }

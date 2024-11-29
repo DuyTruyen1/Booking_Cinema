@@ -20,9 +20,9 @@ class ConfigSeeder extends Seeder
         DB::table('configs')->insert([
             [
                 'banner'            => '/assets_client/img/banner/s_slider_bg.jpg',
-                'phim1'             => rand(1,10),
-                'phim2'             => rand(1,10),
-                'phim3'             => rand(1,10),
+                'phim1'             => rand(1, 10),
+                'phim2'             => rand(1, 10),
+                'phim3'             => rand(1, 10),
                 'banner_header'     => '/assets_client/img/bg/breadcrumb_bg.jpg',
             ],
         ]);

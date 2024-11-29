@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('like_bai_viets', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_bai_viet');
-            $table->integer('id_user_like');
+            $table->unsignedBigInteger('id_bai_viet'); // Khóa ngoại đến bảng 'bai_viets'
+            $table->unsignedBigInteger('id_user_like'); // Khóa ngoại đến bảng 'customers'
             $table->integer('tinh_trang');
             $table->timestamps();
+
+            // Định nghĩa khóa ngoại
+            $table->foreign('id_bai_viet')->references('id')->on('bai_viets')->onDelete('cascade');
+            $table->foreign('id_user_like')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 
@@ -29,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('like_bai_viets');
+        Schema::table('likes', function (Blueprint $table) {
+            //
+        });
     }
 };

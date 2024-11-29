@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->date('ngay_hoa_don');
             $table->string('ten_hoa_don');
-            $table->integer('id_khach_hang');
+            $table->unsignedBigInteger('id_khach_hang'); // Khóa ngoại đến bảng 'customers'
             $table->timestamps();
+
+            // Định nghĩa khóa ngoại
+            $table->foreign('id_khach_hang')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 
